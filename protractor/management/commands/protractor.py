@@ -13,7 +13,7 @@ from django.db import connection
 
 
 class Command(BaseCommand):
-    args = '[--protractor-conf] [--run-server-command] [--spects] [--suite] [--addrport]'
+    args = '[--protractor-conf] [--run-server-command] [--specs] [--suite] [--addrport]'
     help = 'Run protractor tests with a test database'
 
     option_list = BaseCommand.option_list + (
