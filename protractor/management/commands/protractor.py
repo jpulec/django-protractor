@@ -69,9 +69,7 @@ class Command(BaseCommand):
         if options['suite']:
             protractor_command += '--suite {}'.format(options['suite'])
 
-        with open(os.devnull, 'wb') as f:
-            return_code = subprocess.call(protractor_command.split(),
-                stdout=f)
+        return_code = subprocess.call(protractor_command.split())
         if return_code:
             self.stdout.write('Failed')
             sys.exit(1)
