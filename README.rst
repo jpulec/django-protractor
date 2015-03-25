@@ -2,7 +2,7 @@
 Django Protractor
 =====
 
-Easily integrate your protractor tests in your django project.
+Easily integrate your protractor tests in your django project, and get a fresh test database with every run.
 
 Quick Start
 -----------
