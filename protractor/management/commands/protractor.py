@@ -10,6 +10,7 @@ import subprocess
 from django.core.management import call_command
 from django.core.management.base import BaseCommand
 from django.db import connection
+from django.test.runner import setup_databases
 
 
 class Command(BaseCommand):
@@ -53,16 +54,12 @@ class Command(BaseCommand):
 
         self.run_webdriver()
 
-        test_db_create_process = Process(target=self.create_test_db, args=(options,))
-        test_db_create_process.daemon = True
-        test_db_create_process.start()
+        old_config = self.setup_databases(options)
 
         test_server_process = Process(target=self.runserver, args=(options,))
         test_server_process.daemon = True
         test_server_process.start()
 
-        # Wait for the test db to be created, because migrations take time
-        test_db_create_process.join()
         protractor_command = 'protractor {}'.format(options['protractor_conf'])
         if options['specs']:
             protractor_command += '--specs {}'.format(options['specs'])
@@ -70,16 +67,24 @@ class Command(BaseCommand):
             protractor_command += '--suite {}'.format(options['suite'])
 
         return_code = subprocess.call(protractor_command.split())
+        self.teardown_databases(old_config, options)
         if return_code:
             self.stdout.write('Failed')
             sys.exit(1)
         else:
             self.stdout.write('Success')
 
-    def create_test_db(self, options):
-        # Create a test database.
-        db_name = connection.creation.create_test_db(
-            verbosity=options['verbosity'], autoclobber=True, serialize=False)
+    def setup_databases(self, options):
+        return setup_databases(options['verbosity'], False)
+
+    def teardown_databases(self, old_config, options):
+        """
+        Destroys all the non-mirror databases.
+        """
+        old_names, mirrors = old_config
+        for connection, old_name, destroy in old_names:
+            if destroy:
+                connection.creation.destroy_test_db(old_name, options['verbosity'])
 
     def runserver(self, options):
         use_threading = connection.features.test_db_allows_multiple_connections
