@@ -4,6 +4,10 @@ Django Protractor
 
 Easily integrate your protractor tests in your django project, and get a fresh test database with every run.
 
+Dependencies
+------------
+You must have npm and protractor installed. `See Protractor Documentation for more details`_
+
 Quick Start
 -----------
 
@@ -29,3 +33,5 @@ There are a variety of options available:
 - :code:`--specs` to specify which protractor specs to run.
 - :code:`--suite` to specify which protrator suite to run.
 - :code:`--addrport` to specify which ipaddr:port to run the server on. Default is :code:`localhost:8081`
+
+.. _See Protractor Documentation for more details: https://angular.github.io/protractor/#/
