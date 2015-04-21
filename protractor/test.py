@@ -28,5 +28,6 @@ class ProtractorTestCaseMixin(object):
             protractor_command += ' --specs {}'.format(','.join(self.specs))
         if self.suite:
             protractor_command += ' --suite {}'.format(self.suite)
+        protractor_command += ' --params.live_server_url={}'.format(self.live_server_url)
         return_code = subprocess.call(protractor_command.split())
         self.assertEqual(return_code, 0)
