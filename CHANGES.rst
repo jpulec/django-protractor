@@ -1,3 +1,8 @@
+0.5
+===
+* Add live_server_url to the params passed into protractor
+
+
 0.4
 ===
 
