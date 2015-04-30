@@ -40,6 +40,11 @@ class Command(BaseCommand):
             dest='suite',
             help='Specify which suite to run'
         ),
+        make_option('--fixture',
+            action='append',
+            dest='fixtures',
+            help='Specify fixture to load initial data to the database'
+        ),
         make_option('--addrport', action='store', dest='addrport',
             type='string', default='8081',
             help='port number or ipaddr:port to run the server on'),
@@ -55,6 +60,12 @@ class Command(BaseCommand):
         self.run_webdriver()
 
         old_config = self.setup_databases(options)
+
+        fixtures = options['fixtures']
+        if fixtures:
+            for fixture in fixtures:
+                call_command('loaddata', fixture,
+                             **{'verbosity': options['verbosity']})
 
         test_server_process = Process(target=self.runserver, args=(options,))
         test_server_process.daemon = True
