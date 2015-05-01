@@ -1,3 +1,8 @@
+0.6
+===
+* Add fixture support to `protractor` command. (Thanks Dmitry Mikhaylov!)
+
+
 0.5
 ===
 * Add live_server_url to the params passed into protractor

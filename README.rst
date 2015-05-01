@@ -33,5 +33,6 @@ There are a variety of options available:
 - :code:`--specs` to specify which protractor specs to run.
 - :code:`--suite` to specify which protrator suite to run.
 - :code:`--addrport` to specify which ipaddr:port to run the server on. Default is :code:`localhost:8081`
+- :code:`--fixture` to specify which a fixture to load. This can be used multiple times and will load all specified fixtures.
 
 .. _See Protractor Documentation for more details: https://angular.github.io/protractor/#/
