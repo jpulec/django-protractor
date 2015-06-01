@@ -1,3 +1,8 @@
+0.7
+===
+* Add hook for protractor params to be passed from a test case.
+
+
 0.6
 ===
 * Add fixture support to `protractor` command. (Thanks Dmitry Mikhaylov!)
