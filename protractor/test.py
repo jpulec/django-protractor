@@ -22,12 +22,21 @@ class ProtractorTestCaseMixin(object):
         cls.webdriver.kill()
         super(ProtractorTestCaseMixin, cls).tearDownClass()
 
+    def get_protractor_params(self):
+        """A hook for adding params that protractor will receive."""
+        return {
+            'live_server_url': self.live_server_url
+        }
+
     def test_run(self):
         protractor_command = 'protractor {}'.format(self.protractor_conf)
         if self.specs:
             protractor_command += ' --specs {}'.format(','.join(self.specs))
         if self.suite:
             protractor_command += ' --suite {}'.format(self.suite)
-        protractor_command += ' --params.live_server_url={}'.format(self.live_server_url)
+        for key, value in self.get_protractor_params().iteritems():
+            protractor_command += ' --params.{key}={value}'.format(
+                key=key, value=value
+            )
         return_code = subprocess.call(protractor_command.split())
         self.assertEqual(return_code, 0)
