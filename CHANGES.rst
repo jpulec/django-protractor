@@ -1,3 +1,8 @@
+0.8
+===
+* Fix for python 3 compatibility. (Thanks David Black!)
+
+
 0.7
 ===
 * Add hook for protractor params to be passed from a test case.
