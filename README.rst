@@ -30,7 +30,7 @@ I use the wonderful `factory_boy`_ for my test setup and wanted to find a way to
 What spawned is an incredibly hack-y mixin that allows me to do just that.
 
 Create a Subclass of `StaticLiveServerTestCase`_ incorporating the `ProtractorTestCaseMixin` like so, setting the class attribute
-specs to a list of protractor specs. This list will be piped to the `--specs` arg that protractor recieves. Then do any necessary
+`specs` to a list of protractor specs. This list will be piped to the `--specs` arg that protractor recieves. Then do any necessary
 setup by overriding the `setUp()` method.
 
 .. code:: python
