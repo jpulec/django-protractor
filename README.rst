@@ -21,7 +21,7 @@ Quick Start Testing
 
 2. Run the following command to run your protractor tests::
 
-       python manage.py protrator
+       python manage.py protractor
 
 More Advanced Test Case Customization
 -------------------------------------
@@ -71,10 +71,10 @@ Configuration
 
 There are a variety of options available:
 
-- :code:`--protrator-conf` to specify a protractor config file. Default is :code:`protractor.conf.js`
+- :code:`--protractor-conf` to specify a protractor config file. Default is :code:`protractor.conf.js`
 - :code:`--runserver-command` to specify a different runserver command. Default is :code:`runserver`
 - :code:`--specs` to specify which protractor specs to run.
-- :code:`--suite` to specify which protrator suite to run.
+- :code:`--suite` to specify which protractor suite to run.
 - :code:`--addrport` to specify which ipaddr:port to run the server on. Default is :code:`localhost:8081`
 - :code:`--fixture` to specify which a fixture to load. This can be used multiple times and will load all specified fixtures.
 
