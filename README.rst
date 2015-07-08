@@ -59,7 +59,7 @@ setup by overriding the :code:`setUp()` method.
 There are two other hooks that exist as well that can be overridden:
 
 :code:`get_protractor_params()` should return a dict that will be piped to protractor with the :code:`--params` argument.
-By default this passes in the value of :code:`live_server_url`.
+By default this passes in the value of :code:`self.live_server_url`.
 
 :code:`test_run()` is the actual method that gets discovered by test runners, and calls out to protractor using subprocess.
 You may need to override this if you want to do any python assertions about database state after your protractor tests
