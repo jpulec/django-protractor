@@ -34,6 +34,7 @@ specs to a list of protractor specs. This list will be piped to the `--specs` ar
 setup by overriding the `setUp()` method.
 
 .. code:: python
+
   from django.test import StaticLiveServerTestCase
   from protractor.test import ProtractorTestCaseMixin
 
@@ -78,4 +79,5 @@ There are a variety of options available:
 - :code:`--fixture` to specify which a fixture to load. This can be used multiple times and will load all specified fixtures.
 
 .. _See Protractor Documentation for more details: https://angular.github.io/protractor/#/
+.. _factory_boy: https://github.com/rbarrois/factory_boy
 .. _StaticLiveServerTestCase: https://docs.djangoproject.com/en/1.8/ref/contrib/staticfiles/#django.contrib.staticfiles.testing.StaticLiveServerTestCase
