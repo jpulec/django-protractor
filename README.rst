@@ -29,9 +29,9 @@ If you're like me, you'll find that one-time fixture loading for all of your pro
 I use the wonderful `factory_boy`_ for my test setup and wanted to find a way to incorporate it with my protractor acceptance tests.
 What spawned is an incredibly hack-y mixin that allows me to do just that.
 
-Create a Subclass of `StaticLiveServerTestCase`_ incorporating the `ProtractorTestCaseMixin` like so, setting the class attribute
-`specs` to a list of protractor specs. This list will be piped to the `--specs` arg that protractor recieves. Then do any necessary
-setup by overriding the `setUp()` method.
+Create a Subclass of `StaticLiveServerTestCase`_ incorporating the :code:`ProtractorTestCaseMixin` like so, setting the class attribute
+:code:`specs` to a list of protractor specs. This list will be piped to the :code:`--specs` arg that protractor recieves. Then do any necessary
+setup by overriding the :code:`setUp()` method.
 
 .. code:: python
 
@@ -58,10 +58,10 @@ setup by overriding the `setUp()` method.
 
 There are two other hooks that exist as well that can be overridden:
 
-`get_protractor_params()` should return a dict that will be piped to protractor with the `--params` argument.
-By default this passes in the value of `live_server_url`.
+:code:`get_protractor_params()` should return a dict that will be piped to protractor with the :code:`--params` argument.
+By default this passes in the value of :code:`live_server_url`.
 
-`test_run()` is the actual method that gets discovered by test runners, and calls out to protractor using subprocess.
+:code:`test_run()` is the actual method that gets discovered by test runners, and calls out to protractor using subprocess.
 You may need to override this if you want to do any python assertions about database state after your protractor tests
 have run.
 
