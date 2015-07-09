@@ -35,7 +35,7 @@ setup by overriding the :code:`setUp()` method.
 
 .. code:: python
 
-  from django.test import StaticLiveServerTestCase
+  from django.contrib.staticfiles.testing import StaticLiveServerTestCase
   from protractor.test import ProtractorTestCaseMixin
 
 
