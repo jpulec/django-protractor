@@ -108,11 +108,11 @@ class Command(BaseCommand):
             use_ipv6=False,
             verbosity=0,
             use_threading=use_threading,
-            stdout=open(os.devnull, 'wb')
+            stdout=open(os.devnull, 'w')
         )
 
     def run_webdriver(self):
         self.stdout.write('Starting webdriver...')
-        with open(os.devnull, 'wb') as f:
+        with open(os.devnull, 'w') as f:
             subprocess.call(['webdriver-manager', 'update'], stdout=f, stderr=f)
             subprocess.Popen(['webdriver-manager', 'start'], stdout=f, stderr=f)
