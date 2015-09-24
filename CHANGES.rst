@@ -1,3 +1,12 @@
+0.8.1
+=====
+* Fix for passing both suite and specs.
+* Add live_server_url param when using the `protractor` command.
+* Set `baseUrl` automatically for relative url use in protractor.
+
+Thanks Loren M. Lang for all 3!
+
+
 0.8
 ===
 * Fix for python 3 compatibility. (Thanks David Black!)
