@@ -71,11 +71,24 @@ class Command(BaseCommand):
         test_server_process.daemon = True
         test_server_process.start()
 
+        authority = options['addrport']
+        if ':' not in authority:
+            authority = 'localhost:' + authority
+        live_server_url = 'http://%s/' % authority
+
+        params = {
+            'live_server_url': live_server_url
+        }
+
         protractor_command = 'protractor {}'.format(options['protractor_conf'])
         if options['specs']:
             protractor_command += '--specs {}'.format(options['specs'])
         if options['suite']:
             protractor_command += '--suite {}'.format(options['suite'])
+        for key, value in params.items():
+            protractor_command += ' --params.{key}={value}'.format(
+                key=key, value=value
+            )
 
         return_code = subprocess.call(protractor_command.split())
         self.teardown_databases(old_config, options)
