@@ -46,7 +46,7 @@ class Command(BaseCommand):
             help='Specify fixture to load initial data to the database'
         ),
         make_option('--addrport', action='store', dest='addrport',
-            type='string', default='8081',
+            type='string',
             help='port number or ipaddr:port to run the server on'),
     )
 
@@ -65,6 +65,10 @@ class Command(BaseCommand):
         if fixtures:
             call_command('loaddata', *fixtures,
                          **{'verbosity': options['verbosity']})
+
+        if options['addrport'] is None:
+            options['addrport'] = os.environ.get(
+                    'DJANGO_LIVE_TEST_SERVER_ADDRESS', '8081')
 
         test_server_process = Process(target=self.runserver, args=(options,))
         test_server_process.daemon = True
