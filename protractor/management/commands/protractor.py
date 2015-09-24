@@ -73,7 +73,7 @@ class Command(BaseCommand):
         authority = options['addrport']
         if ':' not in authority:
             authority = 'localhost:' + authority
-        live_server_url = 'http://%s/' % authority
+        live_server_url = 'http://%s' % authority
 
         params = {
             'live_server_url': live_server_url
