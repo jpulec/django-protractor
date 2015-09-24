@@ -82,9 +82,9 @@ class Command(BaseCommand):
 
         protractor_command = 'protractor {}'.format(options['protractor_conf'])
         if options['specs']:
-            protractor_command += '--specs {}'.format(options['specs'])
+            protractor_command += ' --specs {}'.format(options['specs'])
         if options['suite']:
-            protractor_command += '--suite {}'.format(options['suite'])
+            protractor_command += ' --suite {}'.format(options['suite'])
         for key, value in params.items():
             protractor_command += ' --params.{key}={value}'.format(
                 key=key, value=value
