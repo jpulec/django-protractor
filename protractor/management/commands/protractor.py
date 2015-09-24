@@ -81,6 +81,7 @@ class Command(BaseCommand):
         }
 
         protractor_command = 'protractor {}'.format(options['protractor_conf'])
+        protractor_command += ' --baseUrl {}'.format(live_server_url)
         if options['specs']:
             protractor_command += ' --specs {}'.format(options['specs'])
         if options['suite']:
