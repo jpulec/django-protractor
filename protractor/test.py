@@ -30,6 +30,7 @@ class ProtractorTestCaseMixin(object):
 
     def test_run(self):
         protractor_command = 'protractor {}'.format(self.protractor_conf)
+        protractor_command += ' --baseUrl {}'.format(self.live_server_url)
         if self.specs:
             protractor_command += ' --specs {}'.format(','.join(self.specs))
         if self.suite:
