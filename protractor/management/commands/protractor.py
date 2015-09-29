@@ -63,9 +63,8 @@ class Command(BaseCommand):
 
         fixtures = options['fixtures']
         if fixtures:
-            for fixture in fixtures:
-                call_command('loaddata', fixture,
-                             **{'verbosity': options['verbosity']})
+            call_command('loaddata', *fixtures,
+                         **{'verbosity': options['verbosity']})
 
         test_server_process = Process(target=self.runserver, args=(options,))
         test_server_process.daemon = True
