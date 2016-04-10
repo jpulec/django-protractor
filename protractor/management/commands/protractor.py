@@ -109,7 +109,10 @@ class Command(BaseCommand):
         """
         Destroys all the non-mirror databases.
         """
-        old_names, mirrors = old_config
+        if len(old_config) > 1:
+            old_names, mirrors = old_config
+        else:
+            old_names = old_config
         for connection, old_name, destroy in old_names:
             if destroy:
                 connection.creation.destroy_test_db(old_name, options['verbosity'])
