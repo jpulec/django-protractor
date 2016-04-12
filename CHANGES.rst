@@ -1,3 +1,7 @@
+0.8.2
+=====
+* Fix for django 1.9+
+
 0.8.1
 =====
 * Fix for passing both suite and specs.
