@@ -95,6 +95,12 @@ class Command(BaseCommand):
             )
 
         return_code = subprocess.call(protractor_command.split())
+
+        # Terminate the live server process before tearing down the databases
+        # to prevent the error
+        # django.db.utils.OperationalError: database is being accessed by other users
+        test_server_process.terminate()
+
         self.teardown_databases(old_config, options)
         if return_code:
             self.stdout.write('Failed')
