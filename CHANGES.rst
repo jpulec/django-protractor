@@ -1,3 +1,7 @@
+0.8.3
+=====
+* Add quotes so that all command line params are strings
+
 0.8.2
 =====
 * Fix for django 1.9+
