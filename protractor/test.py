@@ -36,7 +36,7 @@ class ProtractorTestCaseMixin(object):
         if self.suite:
             protractor_command += ' --suite {}'.format(self.suite)
         for key, value in self.get_protractor_params().items():
-            protractor_command += ' --params.{key}={value}'.format(
+            protractor_command += ' --params.{key}="{value}"'.format(
                 key=key, value=value
             )
         return_code = subprocess.call(protractor_command.split())
