@@ -2,6 +2,11 @@
 Django Protractor
 =====
 
+***UNMAINTAINED***
+---
+I stopped using this library an no longer wish to maintain it. If someone really wants to take over ownership of it, and the ability to deploy oo PyPI, reach out to me.
+
+
 Easily integrate your protractor tests in your django project, and get a fresh test database with every run.
 Additionally, there is an included test case mixin to allow any custom setup code to run.
 
